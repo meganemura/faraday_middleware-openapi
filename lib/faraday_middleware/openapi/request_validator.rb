@@ -35,13 +35,13 @@ module FaradayMiddleware
 
         def validate_request_parameter
           request_operation.validate_request_parameter(env.params || {}, {})
-        rescue OpenAPIParser::NotExistRequiredKey, OpenAPIParser::NotNullError => e
+        rescue OpenAPIParser::OpenAPIError => e
           raise ::FaradayMiddleware::OpenAPI::Error.new(e.message)
         end
 
         def validate_request_body
           request_operation.validate_request_body(content_type, request_body)
-        rescue OpenAPIParser::NotExistRequiredKey, OpenAPIParser::NotNullError, OpenAPIParser::ValidateError => e
+        rescue OpenAPIParser::OpenAPIError => e
           raise ::FaradayMiddleware::OpenAPI::Error.new(e.message)
         end
 
