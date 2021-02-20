@@ -23,10 +23,6 @@ module FaradayMiddleware
         request_operation.validate_request_body
       end
 
-      def request_operation(env:, schema_path:)
-        RequestOperation.new(env: env, schema_path: schema_path)
-      end
-
       class RequestOperation
         def initialize(env:, schema_path:)
           @env = env
