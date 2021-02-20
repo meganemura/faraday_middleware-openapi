@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["meganemura"]
   spec.email         = ["meganemura@users.noreply.github.com"]
 
-  spec.summary       = ""
-  spec.description   = ""
+  spec.summary       = "Faraday middleware for validation by OpenAPI"
+  spec.description   = spec.summary
   spec.homepage      = "https://github.com/meganemura/faraday_middleware-openapi"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
