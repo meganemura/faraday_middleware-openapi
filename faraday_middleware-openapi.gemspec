@@ -4,7 +4,7 @@ require_relative "lib/faraday_middleware/openapi/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "faraday_middleware-openapi"
-  spec.version       = FaradayMiddleware::Openapi::VERSION
+  spec.version       = FaradayMiddleware::OpenAPI::VERSION
   spec.authors       = ["meganemura"]
   spec.email         = ["meganemura@users.noreply.github.com"]
 

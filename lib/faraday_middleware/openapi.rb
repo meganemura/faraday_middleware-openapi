@@ -3,7 +3,7 @@
 require_relative "openapi/version"
 
 module FaradayMiddleware
-  module Openapi
+  module OpenAPI
     class Error < StandardError; end
     # Your code goes here...
   end
