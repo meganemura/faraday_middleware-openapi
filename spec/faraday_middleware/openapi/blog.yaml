@@ -23,6 +23,9 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              required:
+                - fileName
+                - file
               properties:
                 fileName:
                   type: string

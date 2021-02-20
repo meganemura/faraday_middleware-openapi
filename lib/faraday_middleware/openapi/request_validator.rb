@@ -41,7 +41,7 @@ module FaradayMiddleware
 
         def validate_request_body
           request_operation.validate_request_body(content_type, request_body)
-        rescue OpenAPIParser::NotExistRequiredKey, OpenAPIParser::NotNullError => e
+        rescue OpenAPIParser::NotExistRequiredKey, OpenAPIParser::NotNullError, OpenAPIParser::ValidateError => e
           raise ::FaradayMiddleware::OpenAPI::Error.new(e.message)
         end
 
@@ -61,6 +61,20 @@ module FaradayMiddleware
               JSON.parse(env.request_body)
             rescue
               nil
+            end
+          when "multipart/form-data"
+            validatablize_multipart_form_data(env.request_body)
+          end
+        end
+
+        def validatablize_multipart_form_data(request_body)
+          body = request_body.deep_stringify_keys
+          body.deep_transform_values do |value|
+            case value
+            when Faraday::FilePart
+              value.yield_self {|x| v = x.read; x.rewind; v }
+            else
+              value
             end
           end
         end
