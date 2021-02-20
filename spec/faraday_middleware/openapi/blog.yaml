@@ -1,0 +1,17 @@
+openapi: "3.0.0"
+paths:
+  /articles:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
