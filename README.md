@@ -13,7 +13,7 @@ Faraday.new(...) do |conn|
   conn.request :openapi, "/path/to/openapi_schema.yaml"
 
   # if using :multipart, it must be defined after :openapi
-  conn.request(:multipart)
+  conn.request :multipart
 end
 ```
 
