@@ -15,3 +15,20 @@ paths:
                   type: string
                 body:
                   type: string
+  /attachments:
+    post:
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - fileName
+                - file
+              properties:
+                fileName:
+                  type: string
+                file:
+                  type: string
+                  format: binary
