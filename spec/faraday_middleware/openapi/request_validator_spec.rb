@@ -14,19 +14,21 @@ RSpec.describe FaradayMiddleware::OpenAPI::RequestValidator do
   end
 
   describe "request body" do
-    let(:method) { :post }
-    let(:url) { URI.parse("https://example.com/articles") }
+    describe "when the content type is application/json" do
+      let(:method) { :post }
+      let(:url) { URI.parse("https://example.com/articles") }
 
-    context "when the request body is valid" do
-      it "does not raise error" do
-        result = process(method, url, JSON.dump({title: "My first blog"}), 'application/json')
-        expect(result[:body]).to be_nil
+      context "when the request body is valid" do
+        it "does not raise error" do
+          result = process(method, url, JSON.dump({title: "My first blog"}), 'application/json')
+          expect(result[:body]).to be_nil
+        end
       end
-    end
 
-    context "when the request body is invalid" do
-      it "raises error" do
-        expect { process(method, url, nil, 'application/json') }.to raise_error(FaradayMiddleware::OpenAPI::Error)
+      context "when the request body is invalid" do
+        it "raises error" do
+          expect { process(method, url, nil, 'application/json') }.to raise_error(FaradayMiddleware::OpenAPI::Error)
+        end
       end
     end
   end
